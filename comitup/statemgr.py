@@ -32,6 +32,7 @@ from comitup import states                                 # noqa
 from comitup import nm                                     # noqa
 from comitup import modemgr                                # noqa
 from comitup import kicknm                                 # noqa
+from comitup import countrycode                            # noqa
 
 comitup_path = "/com/github/davesteele/comitup"
 
@@ -98,10 +99,14 @@ class Comitup(dbus.service.Object):
             'id': data.id,
             'hostnames': ';'.join(get_hosts(conf, data)),
             'imode': modemgr.get_mode(),
+            'country': countrycode.get_country_code(),
             }
 
         return info
 
+    @dbus.service.method(comitup_int, in_signature="s", out_signature="")
+    def set_country(code):
+        countrycode.set_country_code(code)
 
 def get_hosts(conf, data):
     return [

@@ -73,6 +73,9 @@ following methods.
         connection is made with the other wifi device, and traffic is routed
         between them. The web service is terminated when **CONNECTED**.
 
+      * _country_ - The 2-character ISO3166 country code used for Wifi regulatory
+        compliance. The string '00' indicates that the country has not been set.
+
   * _access_points()_
 
     Input: None
@@ -112,6 +115,14 @@ following methods.
 
     Delete the connection for _ssid_. The system will not be able to reconnect
     using this connection.
+
+  * _set_country(code)_
+
+    Input: A two-character ISO3166 country code.
+
+    Output: None
+
+    Set the country code for Wifi regulatory compliance.
 
 ## COPYRIGHT
 
